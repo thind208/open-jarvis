@@ -33,7 +33,7 @@ jobs:
           gradle-version: '8.2.1'
 
       - name: Build debug APK
-        run: gradle -Pandroid.useAndroidX=true --no-daemon :app:assembleDebug
+        run: gradle -Pandroid.useAndroidX=true -Dorg.gradle.jvmargs='-Xmx3g -XX:MaxMetaspaceSize=768m -Dfile.encoding=UTF-8' --max-workers=2 --no-daemon :app:assembleDebug
 
       - name: Save APK
         uses: actions/upload-artifact@v4
